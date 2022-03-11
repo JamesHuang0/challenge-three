@@ -11,6 +11,61 @@ var confirmNumber;
 var confirmSpecialChar;
 var confirmAlphaLower;
 var confirmAlphaUpper;
+var selectParameters;
+
+var generatePassword = function() {
+  var confirmLength = window.prompt("How many characters would you like in your password? Select an amount between 8 and 128 characters.");
+
+
+    while(confirmLength <= 7 || confirmLength >= 129) {
+      window.alert("Generated password length must be between 8-128 characters. Please try again.");
+      generatePassword();
+      break;
+    }
+  
+  
+    var confirmNumber = confirm("Click OK to include numbers in your password.");
+    var confirmSpecialChar = confirm("Click OK to include special characters in your password.");
+    var confirmAlphaLower = confirm("Click OK to include lowercase letters in your password.");
+    var confirmAlphaUpper = confirm("Click OK to include uppercase letters in your password.");
+
+      while(confirmNumber === false && confirmSpecialChar === false && confirmAlphaLower === false && confirmAlphaUpper === false) {
+        window.alert("You must select at least ONE parameter.");
+          var confirmNumber = confirm("Click OK to include numbers in your password.");
+          var confirmSpecialChar = confirm("Click OK to include special characters in your password.");
+          var confirmAlphaLower = confirm("Click OK to include lowercase letters in your password.");
+          var confirmAlphaUpper = confirm("Click OK to include uppercase letters in your password.");
+      }
+
+    var passwordChars = []
+
+    if (confirmNumber) {
+      passwordChars = passwordChars.concat(number)
+    }
+
+    if (confirmSpecialChar) {
+      passwordChars = passwordChars.concat(specialChar)
+    }
+
+    if (confirmAlphaLower) {
+      passwordChars = passwordChars.concat(alphaLower)
+    }
+
+    if (confirmAlphaUpper) {
+      passwordChars = passwordChars.concat(alphaUpper)
+    }
+
+    console.log(passwordChars)
+
+    var randomPassword = ""
+
+    for (var i = 0, i < confirmLength, i++) {
+      randomPassword = randomPassword + passwordChars[Math.floor(Math.random() * passwordChars.length)];
+      console.log(randomPassword)
+    }
+    return randomPassword;
+
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -26,3 +81,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+generatePassword();
