@@ -59,7 +59,7 @@ var generatePassword = function() {
 
     var randomPassword = ""
 
-    for (var i = 0, i < confirmLength, i++) {
+    for (var i = 0; i < confirmLength; i++) {
       randomPassword = randomPassword + passwordChars[Math.floor(Math.random() * passwordChars.length)];
       console.log(randomPassword)
     }
@@ -81,5 +81,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-generatePassword();
